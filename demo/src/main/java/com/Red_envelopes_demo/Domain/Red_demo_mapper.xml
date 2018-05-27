@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Red_envelopes_demo.Dao.Red_demo_mapper_face">
+
+  	<resultMap id="t_red_paket"
+		type="com.Red_envelopes_demo.Dao.Demo_t_red_paket_pojo">
+	</resultMap>
+	
+	<parameterMap id="t_red_paket"
+		type="com.Red_envelopes_demo.Dao.Demo_t_red_paket_pojo">
+
+	</parameterMap>
+	
+	
+	<sql id="select_t_red_paket">
+	   id,user_id,stock ,version, note
+	</sql>
+	
+	<sql id="insert_t_red_paket">
+	   user_id ,stock ,version, note
+	</sql>
+	
+	
+	
+
+	
+     <!-- 查找红包信息updete t_red_paket set stock=stock-1,version=version+1 where id=1 and version=1-->
+	<select id="select_Red" resultType="com.Red_envelopes_demo.Dao.Demo_t_red_paket_pojo" parameterType="long">
+       select <include refid="select_t_red_paket"></include> from t_red_paket where id=#{id} 
+     </select>
+	
+	
+	
+	<!-- 抢扣红包-->
+	<update id="update_red"  >
+	
+	update t_red_paket set stock=stock-1,version=version+1 where id=#{id} and version=#{version}
+	</update>
+  
+	<!-- 添加红包 -->
+	<insert id="insert_red"  parameterType="com.Red_envelopes_demo.Dao.Demo_t_red_paket_pojo">
+	insert into t_red_paket (user_id ,stock ,version, note) values(
+	                                        #{user_id,jdbcType=INTEGER},	                                       	                                       	                                      
+	                                        #{stock,jdbcType=INTEGER},
+	                                        #{version,jdbcType=INTEGER},
+	                                        #{note,jdbcType=VARCHAR}   )
+	
+	</insert>
+ 
+
+
+</mapper>

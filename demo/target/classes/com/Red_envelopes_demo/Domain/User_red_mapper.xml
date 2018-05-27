@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Red_envelopes_demo.Dao.user_red_mapper_face">
+
+  	<resultMap id="System_User_ResultMap"
+		type="com.Red_envelopes_demo.Dao.Demo_t_user_red_packet_pojo">
+	</resultMap>
+	
+	<parameterMap id="System_User_ParameterMap"
+		type="com.Red_envelopes_demo.Dao.Demo_t_user_red_packet_pojo">
+
+	</parameterMap>
+	
+	
+	<sql id="insert_t_user_red_packet">
+	id,red_packet_id,user_id,note
+	</sql>
+	
+
+		<!-- 添加红包 -->
+	<insert id="insert_user_red"  parameterType="com.Red_envelopes_demo.Dao.Demo_t_user_red_packet_pojo">
+	insert into t_user_red_packet (red_packet_id,user_id) values(
+	                                        #{red_packet_id,jdbcType=INTEGER},
+	                                         #{user_id,jdbcType=INTEGER}
+	                                        )
+	
+	</insert>
+ 
+ 
+
+
+</mapper>
